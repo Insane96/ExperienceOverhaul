@@ -1,0 +1,22 @@
+{
+    "required": true,
+    "package": "insane96mcp.experienceoverhaul.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "BeehiveBlockMixin",
+        "BrushableBlockEntityMixin",
+        "PlayerMixin",
+        "SheepMixin",
+        "ThrownExperienceBottleMixin",
+        "accessor.MobAccessor"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "overwrites": {
+        "requireAnnotations": true
+    },
+    "mixinextras": {
+        "minVersion": "0.5.3"
+  }
+}
