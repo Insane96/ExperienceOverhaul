@@ -2,6 +2,7 @@ package insane96mcp.experienceoverhaul.module.experience;
 
 import insane96mcp.experienceoverhaul.mixin.accessor.MobAccessor;
 import insane96mcp.experienceoverhaul.module.EOModules;
+import insane96mcp.experienceoverhaul.network.message.SyncExperienceDisabledGameruleMessage;
 import insane96mcp.insanelib.core.ModNBTData;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
@@ -10,36 +11,34 @@ import insane96mcp.insanelib.core.feature.config.Config;
 import insane96mcp.insanelib.core.feature.config.MinMaxConfig;
 import insane96mcp.insanelib.module.base.TagsFeature;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.projectile.ThrownExperienceBottle;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 
 @LoadFeature(module = EOModules.EXPERIENCE, description = "Various changes to experience. You can also use the iguanatweaks:disableExperience game rule to make experience disappear altogether.")
 public class DroppedExperience extends Feature {
-	/*public static final GameRules.Key<GameRules.BooleanValue> RULE_DISABLEEXPERIENCE = GameRules.register("iguanatweaks:disableExperience", GameRules.Category.PLAYER, GameRules.BooleanValue.create(false, (server, booleanValue) -> {
+	public static final GameRules.Key<GameRules.BooleanValue> RULE_DISABLEEXPERIENCE = GameRules.register("experienceoverhaul:disable_experience", GameRules.Category.PLAYER, GameRules.BooleanValue.create(false, (server, booleanValue) -> {
 		DroppedExperience.disableExperience = booleanValue.get();
-		for (ServerPlayer serverPlayer : server.getPlayerList().getPlayers()) {
-			SyncExperienceFeature.sync(booleanValue.get(), serverPlayer);
-		}
-	}));*/
+		SyncExperienceDisabledGameruleMessage.sync(booleanValue.get());
+	}));
 
 	public static ResourceLocation XP_PROCESSED;
 	//public static final TagKey<Block> NO_BLOCK_XP_MULTIPLIER = ISOBlockTagsProvider.create("no_xp_multiplier");
@@ -99,11 +98,11 @@ public class DroppedExperience extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onEntityJoinLevel(EntityJoinLevelEvent event) {
-		/*if (event.getEntity() instanceof ExperienceOrb xpOrb
+		if (event.getEntity() instanceof ExperienceOrb xpOrb
 				&& xpOrb.level().getGameRules().getBoolean(RULE_DISABLEEXPERIENCE)) {
 			event.setCanceled(true);
 			return;
-		}*/
+		}
 		if (!this.isEnabled())
 			return;
 		if (event.getEntity() instanceof ExperienceOrb xpOrb)
@@ -208,24 +207,23 @@ public class DroppedExperience extends Feature {
         event.setCanceled(true);
     }
 
-    /*@SubscribeEvent
+    @SubscribeEvent
 	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-		SyncExperienceFeature.sync(event.getEntity().level().getGameRules().getBoolean(RULE_DISABLEEXPERIENCE), (ServerPlayer) event.getEntity());
-	}*/
+		SyncExperienceDisabledGameruleMessage.sync((ServerPlayer) event.getEntity(), event.getEntity().level().getGameRules().getBoolean(RULE_DISABLEEXPERIENCE));
+	}
 
-	//Render before Regenerating absorption
-	/*@OnlyIn(Dist.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void removeExperienceBar(final RenderGuiOverlayEvent.Pre event) {
-		if (!disableExperience
-				|| Minecraft.getInstance().player == null)
+	public void removeExperienceBar(final RenderGuiLayerEvent.Pre event) {
+		if (!disableExperience)
 			return;
 
-		if (Minecraft.getInstance().player.jumpableVehicle() == null && event.getOverlay().equals(VanillaGuiOverlay.VIGNETTE.type())) {
-			((ForgeGui) Minecraft.getInstance().gui).rightHeight -= 6;
-			((ForgeGui) Minecraft.getInstance().gui).leftHeight -= 6;
-		}
-		else if (event.getOverlay().equals(VanillaGuiOverlay.EXPERIENCE_BAR.type()))
+		if (event.getName().equals(VanillaGuiLayers.EXPERIENCE_BAR) || event.getName().equals(VanillaGuiLayers.EXPERIENCE_LEVEL)) {
 			event.setCanceled(true);
-	}*/
+			if (event.getName().equals(VanillaGuiLayers.EXPERIENCE_BAR)) {
+				Minecraft.getInstance().gui.leftHeight -= 6;
+				Minecraft.getInstance().gui.rightHeight -= 6;
+			}
+		}
+	}
 }
