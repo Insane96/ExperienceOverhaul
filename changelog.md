@@ -1,4 +1,4 @@
-## Upcoming
+## 1.0.1.1
 * Fixed mod not required client side
 
 ## 1.0.1.0-alpha
