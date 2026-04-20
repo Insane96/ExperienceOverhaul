@@ -33,7 +33,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
-@LoadFeature(module = EOModules.EXPERIENCE, description = "Various changes to experience. You can also use the iguanatweaks:disableExperience game rule to make experience disappear altogether.")
+@LoadFeature(module = EOModules.EXPERIENCE, description = "Various changes to experience. You can also use the experienceoverhaul:disable_experience game rule to make experience disappear altogether.")
 public class DroppedExperience extends Feature {
 	public static final GameRules.Key<GameRules.BooleanValue> RULE_DISABLEEXPERIENCE = GameRules.register("experienceoverhaul:disable_experience", GameRules.Category.PLAYER, GameRules.BooleanValue.create(false, (server, booleanValue) -> {
 		DroppedExperience.disableExperience = booleanValue.get();
@@ -44,7 +44,7 @@ public class DroppedExperience extends Feature {
 	//public static final TagKey<Block> NO_BLOCK_XP_MULTIPLIER = ISOBlockTagsProvider.create("no_xp_multiplier");
 	//public static final TagKey<EntityType<?>> NO_ENTITY_XP_MULTIPLIER = TagKey.create(Registries.ENTITY_TYPE, InsaneSO.location("no_xp_multiplier"));
 
-	@Config(min = 0d, max = 128d, description = "ALL Experience dropped will be multiplied by this value, regardless if affected by another multiplier.\nUse the iguanatweaks:disableExperience game rule to disable experience completely.")
+	@Config(min = 0d, max = 128d, description = "ALL Experience dropped will be multiplied by this value, regardless if affected by another multiplier.\nUse the experienceoverhaul:disable_experience game rule to disable experience completely.")
 	public static Double globalMultiplier = 1d;
 
 	@Config(min = 0d, max = 128d, description = "Experience dropped by blocks (Ores and Spawners) will be multiplied by this multiplier. Experience dropped by blocks are still affected by 'Global Experience Multiplier'\nCan be set to 0 to make blocks drop no experience")
