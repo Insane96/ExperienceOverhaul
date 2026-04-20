@@ -3,7 +3,7 @@
   * Anvil Degradation
     * Change degradation chance and allow repairing with iron blocks (configurable with item tag)
   * Anvil Renaming
-    * Prevent anvil from breaking 
+    * Prevent anvil from breaking when just renaming items and cancel rename cost
 * Fixed mod not required client side
 
 ## 1.0.1.0-alpha

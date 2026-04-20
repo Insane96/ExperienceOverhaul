@@ -1,5 +1,6 @@
 package insane96mcp.experienceoverhaul.network;
 
+import insane96mcp.experienceoverhaul.network.message.AnvilRepairSyncMessage;
 import insane96mcp.experienceoverhaul.network.message.SyncExperienceDisabledGameruleMessage;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -10,5 +11,6 @@ public class NetworkHandler {
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar("1");
         registrar.playToClient(SyncExperienceDisabledGameruleMessage.TYPE, SyncExperienceDisabledGameruleMessage.STREAM_CODEC, SyncExperienceDisabledGameruleMessage::handle);
+        registrar.playToClient(AnvilRepairSyncMessage.TYPE, AnvilRepairSyncMessage.STREAM_CODEC, AnvilRepairSyncMessage::handle);
     }
 }

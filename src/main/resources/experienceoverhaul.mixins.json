@@ -3,12 +3,16 @@
     "package": "insane96mcp.experienceoverhaul.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
+        "AnvilMenuMixin",
         "BeehiveBlockMixin",
         "BrushableBlockEntityMixin",
         "PlayerMixin",
         "SheepMixin",
         "ThrownExperienceBottleMixin",
         "accessor.MobAccessor"
+    ],
+    "client": [
+        "client.AnvilScreenMixin"
     ],
     "injectors": {
         "defaultRequire": 1

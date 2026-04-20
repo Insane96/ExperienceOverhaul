@@ -2,6 +2,7 @@ package insane96mcp.experienceoverhaul;
 
 import com.mojang.logging.LogUtils;
 import insane96mcp.experienceoverhaul.module.EOModules;
+import insane96mcp.experienceoverhaul.module.anvil.AnvilRepairReloadListener;
 import insane96mcp.experienceoverhaul.network.NetworkHandler;
 import insane96mcp.insanelib.setup.ILModConfig;
 import net.minecraft.resources.ResourceLocation;
@@ -9,6 +10,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import org.slf4j.Logger;
 
 @Mod(ExperienceOverhaul.MOD_ID)
@@ -23,6 +26,7 @@ public class ExperienceOverhaul {
         modContainer.registerConfig(ModConfig.Type.COMMON, CONFIG.spec);
 
         eventBus.addListener(NetworkHandler::register);
+        NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> event.addListener(AnvilRepairReloadListener.INSTANCE));
     }
 
     public static ResourceLocation location(String path) {

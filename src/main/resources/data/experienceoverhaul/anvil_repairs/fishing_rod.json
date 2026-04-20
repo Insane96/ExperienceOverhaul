@@ -1,0 +1,9 @@
+{
+  "item_to_repair": "minecraft:fishing_rod",
+  "repair": [
+    {
+      "repair_material": "minecraft:string",
+      "amount": 2
+    }
+  ]
+}

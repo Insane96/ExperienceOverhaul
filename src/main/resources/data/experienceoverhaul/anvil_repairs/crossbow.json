@@ -1,0 +1,15 @@
+{
+  "item_to_repair": "minecraft:crossbow",
+  "repair": [
+    {
+      "repair_material": "minecraft:string",
+      "amount": 3,
+      "max_repair": 0.5
+    },
+    {
+      "repair_material": "minecraft:iron_nugget",
+      "amount": 9,
+      "cost_multiplier": 9
+    }
+  ]
+}

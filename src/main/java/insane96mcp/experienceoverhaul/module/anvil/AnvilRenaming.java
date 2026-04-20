@@ -16,6 +16,10 @@ public class AnvilRenaming extends Feature {
 	@Config(description = "Anvils don't wear down when only used for renaming")
 	public static Boolean noBreak = true;
 
+	public static boolean isNoCost() {
+		return Feature.isEnabled(AnvilRenaming.class) && noCost;
+	}
+
 	@SubscribeEvent
 	public void onAnvilRepair(AnvilRepairEvent event) {
 		if (!this.isEnabled() || !noBreak)

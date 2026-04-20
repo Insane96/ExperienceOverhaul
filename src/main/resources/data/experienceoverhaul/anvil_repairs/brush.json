@@ -1,0 +1,9 @@
+{
+  "item_to_repair": "minecraft:brush",
+  "repair": [
+    {
+      "repair_material": "minecraft:feather",
+      "amount": 1
+    }
+  ]
+}
