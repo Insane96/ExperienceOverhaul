@@ -2,6 +2,8 @@
 * Ported Anvil features
   * Anvil Degradation
     * Change degradation chance and allow repairing with iron blocks (configurable with item tag)
+  * Anvil Renaming
+    * Prevent anvil from breaking 
 * Fixed mod not required client side
 
 ## 1.0.1.0-alpha
