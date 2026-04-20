@@ -1,0 +1,14 @@
+{
+  "item_to_repair": "minecraft:golden_chestplate",
+  "repair": [
+    {
+      "repair_material": "minecraft:gold_ingot",
+      "amount": 6.0
+    },
+    {
+      "repair_material": "minecraft:gold_nugget",
+      "amount": 54,
+      "cost_multiplier": 9
+    }
+  ]
+}

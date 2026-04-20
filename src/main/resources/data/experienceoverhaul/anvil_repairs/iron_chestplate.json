@@ -1,0 +1,14 @@
+{
+  "item_to_repair": "minecraft:iron_chestplate",
+  "repair": [
+    {
+      "repair_material": "minecraft:iron_ingot",
+      "amount": 6.0
+    },
+    {
+      "repair_material": "minecraft:iron_nugget",
+      "amount": 54,
+      "cost_multiplier": 9
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "item_to_repair": "minecraft:golden_leggings",
+  "repair": [
+    {
+      "repair_material": "minecraft:gold_ingot",
+      "amount": 5.25
+    },
+    {
+      "repair_material": "minecraft:gold_nugget",
+      "amount": 47,
+      "cost_multiplier": 9
+    }
+  ]
+}

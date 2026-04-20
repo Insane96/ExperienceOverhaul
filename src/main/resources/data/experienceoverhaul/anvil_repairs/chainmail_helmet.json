@@ -1,0 +1,9 @@
+{
+  "item_to_repair": "minecraft:chainmail_helmet",
+  "repair": [
+    {
+      "repair_material": "minecraft:chain",
+      "amount": 2.25
+    }
+  ]
+}

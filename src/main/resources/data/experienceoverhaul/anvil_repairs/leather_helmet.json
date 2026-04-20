@@ -1,0 +1,14 @@
+{
+  "item_to_repair": "minecraft:leather_helmet",
+  "repair": [
+    {
+      "repair_material": "minecraft:leather",
+      "amount": 3.75
+    },
+    {
+      "repair_material": "minecraft:rabbit_hide",
+      "amount": 10,
+      "max_repair": 0.5
+    }
+  ]
+}

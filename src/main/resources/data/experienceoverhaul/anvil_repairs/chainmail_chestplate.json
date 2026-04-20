@@ -1,0 +1,9 @@
+{
+  "item_to_repair": "minecraft:chainmail_chestplate",
+  "repair": [
+    {
+      "repair_material": "minecraft:chain",
+      "amount": 3.75
+    }
+  ]
+}

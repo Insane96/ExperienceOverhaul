@@ -1,0 +1,9 @@
+{
+  "item_to_repair": "minecraft:turtle_helmet",
+  "repair": [
+    {
+      "repair_material": "minecraft:scute",
+      "amount": 3.75
+    }
+  ]
+}

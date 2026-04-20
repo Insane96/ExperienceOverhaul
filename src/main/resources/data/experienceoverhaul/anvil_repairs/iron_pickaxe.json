@@ -1,0 +1,14 @@
+{
+  "item_to_repair": "minecraft:iron_pickaxe",
+  "repair": [
+    {
+      "repair_material": "minecraft:iron_ingot",
+      "amount": 2.25
+    },
+    {
+      "repair_material": "minecraft:iron_nugget",
+      "amount": 20,
+      "cost_multiplier": 9
+    }
+  ]
+}
