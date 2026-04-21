@@ -235,7 +235,8 @@ public class AnvilHandler {
             int totalEnchantLevels = 0;
             for (Holder<Enchantment> holder : leftEnchantments.keySet())
                 totalEnchantLevels += leftEnchantments.getLevel(holder);
-            finalCost = (int) Math.round(totalEnchantLevels * xpPerEnchantLevel);
+            float percentRepaired = (float)(left.getDamageValue() - resultStack.getDamageValue()) / left.getMaxDamage();
+            finalCost = (int) Math.round(totalEnchantLevels * xpPerEnchantLevel * percentRepaired);
         } else {
             double multiplier = AnvilXpCost.getMultiplier();
             finalCost = (int) Math.round((baseCost + mergeCost) * multiplier);

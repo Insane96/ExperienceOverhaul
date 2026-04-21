@@ -1,9 +1,6 @@
-## Upcoming
+## 1.1.0.0-alpha
 * Ported Anvil features
-  * Anvil Degradation
-    * Change degradation chance and allow repairing with iron blocks (configurable with item tag)
-  * Anvil Renaming
-    * Prevent anvil from breaking when just renaming items and cancel rename cost
+  * Repairing items no longer costs more materials if the item is enchanted, but will instead cost 0.5 levels per enchantment level on it
 * Fixed mod not required client side
 
 ## 1.0.1.0-alpha
