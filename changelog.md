@@ -1,5 +1,7 @@
 ## Upcoming
 * Removed the game rule to disable experience
+  * Moved to Rune Enchanting
+* Cost label is no longer shown if cost = 0 instead of showing No Cost
 
 ## 1.1.0.0-alpha
 * Ported Anvil features
