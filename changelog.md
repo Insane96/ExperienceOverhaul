@@ -1,3 +1,6 @@
+## 1.1.1.1
+* Fixed anvil not working for other mod's custom recipes
+
 ## 1.1.1.0
 * Removed the game rule to disable experience
   * Moved to Rune Enchanting

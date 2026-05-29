@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AnvilUpdateEvent;
@@ -27,13 +28,15 @@ public class AnvilHandler {
 
     private static final int COST_RENAME = 1;
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onAnvilUpdate(AnvilUpdateEvent event) {
         boolean renamingNoCost = AnvilRenaming.isNoCost();
         if (!Feature.isEnabled(AnvilXpCost.class)
                 && !Feature.isEnabled(AnvilMaterialRepair.class)
                 && !Feature.isEnabled(AnvilCustomRepairs.class)
                 && !renamingNoCost)
+            return;
+        if (!event.getOutput().isEmpty())
             return;
 
         ItemStack left = event.getLeft();
