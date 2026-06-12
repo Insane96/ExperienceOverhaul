@@ -3,7 +3,6 @@
     "package": "insane96mcp.experienceoverhaul.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
-        "AnvilMenuMixin",
         "BeehiveBlockMixin",
         "BrushableBlockEntityMixin",
         "PlayerMixin",
