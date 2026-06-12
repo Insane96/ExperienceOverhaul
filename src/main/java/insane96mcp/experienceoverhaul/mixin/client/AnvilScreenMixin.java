@@ -37,12 +37,4 @@ public abstract class AnvilScreenMixin extends ItemCombinerScreen<AnvilMenu> {
         if (!Feature.isEnabled(AnvilXpCost.class)) return cap;
         return AnvilXpCost.repairCap;
     }
-
-    @Inject(method = "renderLabels", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/inventory/ItemCombinerScreen;renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V", shift = At.Shift.AFTER), cancellable = true)
-    public void experienceoverhaul$preventLabelRender(GuiGraphics guiGraphics, int mouseX, int mouseY, CallbackInfo ci) {
-        if (this.menu.getCost() != 0 || !this.menu.getSlot(2).hasItem())
-            return;
-
-        ci.cancel();
-    }
 }
