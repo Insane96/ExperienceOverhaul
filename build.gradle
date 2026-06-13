@@ -17,6 +17,10 @@ repositories {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
     }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 base {
@@ -78,6 +82,9 @@ dependencies {
     implementation "maven.modrinth:insanelib:${insanelib_version}"
 
     implementation(jarJar("io.github.llamalad7:mixinextras-neoforge:0.5.3"))
+
+    compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}:api"
+    runtimeOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

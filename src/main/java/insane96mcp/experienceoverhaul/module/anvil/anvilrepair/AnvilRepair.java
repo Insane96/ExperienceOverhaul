@@ -1,4 +1,4 @@
-package insane96mcp.experienceoverhaul.module.anvil;
+package insane96mcp.experienceoverhaul.module.anvil.anvilrepair;
 
 import com.google.gson.*;
 import com.google.gson.annotations.JsonAdapter;
@@ -7,6 +7,7 @@ import insane96mcp.insanelib.data.ObjTag;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.GsonHelper;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ import java.util.Optional;
 
 @JsonAdapter(AnvilRepair.Serializer.class)
 public class AnvilRepair {
-    public final ObjTag<net.minecraft.world.item.Item> itemToRepair;
+    public final ObjTag<Item> itemToRepair;
     public final List<RepairData> repairData;
 
-    public AnvilRepair(ObjTag<net.minecraft.world.item.Item> itemToRepair, List<RepairData> repairData) {
+    public AnvilRepair(ObjTag<Item> itemToRepair, List<RepairData> repairData) {
         this.itemToRepair = itemToRepair;
         this.repairData = repairData;
     }
@@ -35,12 +36,12 @@ public class AnvilRepair {
         return Optional.empty();
     }
 
-    public record RepairData(ObjTag<net.minecraft.world.item.Item> repairMaterial,
+    public record RepairData(ObjTag<Item> repairMaterial,
                              float amountRequired,
                              float maxRepair,
                              float costMultiplier) {
         public static RepairData fromNetwork(FriendlyByteBuf buf) {
-            ObjTag<net.minecraft.world.item.Item> material = ObjTag.of(buf.readUtf(), Registries.ITEM);
+            ObjTag<Item> material = ObjTag.of(buf.readUtf(), Registries.ITEM);
             float amount = buf.readFloat();
             float maxRepair = buf.readFloat();
             float costMultiplier = buf.readFloat();
@@ -61,12 +62,12 @@ public class AnvilRepair {
         @Override
         public AnvilRepair deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject obj = json.getAsJsonObject();
-            ObjTag<net.minecraft.world.item.Item> itemToRepair = ObjTag.deserialize(obj.get("item_to_repair"), Registries.ITEM);
+            ObjTag<Item> itemToRepair = ObjTag.deserialize(obj.get("item_to_repair"), Registries.ITEM);
             List<RepairData> repairData = new ArrayList<>();
             JsonArray array = GsonHelper.getAsJsonArray(obj, "repair");
             for (JsonElement element : array) {
                 JsonObject r = element.getAsJsonObject();
-                ObjTag<net.minecraft.world.item.Item> material = ObjTag.deserialize(r.get("repair_material"), Registries.ITEM);
+                ObjTag<Item> material = ObjTag.deserialize(r.get("repair_material"), Registries.ITEM);
                 float amount = GsonHelper.getAsFloat(r, "amount");
                 if (amount <= 0)
                     throw new JsonParseException("amount must be greater than 0");
@@ -102,7 +103,7 @@ public class AnvilRepair {
     }
 
     public static AnvilRepair fromNetwork(FriendlyByteBuf buf) {
-        ObjTag<net.minecraft.world.item.Item> itemToRepair = ObjTag.of(buf.readUtf(), Registries.ITEM);
+        ObjTag<Item> itemToRepair = ObjTag.of(buf.readUtf(), Registries.ITEM);
         int size = buf.readInt();
         List<RepairData> repairData = new ArrayList<>();
         for (int i = 0; i < size; i++)

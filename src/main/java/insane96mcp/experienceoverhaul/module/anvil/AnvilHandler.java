@@ -1,6 +1,8 @@
 package insane96mcp.experienceoverhaul.module.anvil;
 
 import insane96mcp.experienceoverhaul.ExperienceOverhaul;
+import insane96mcp.experienceoverhaul.module.anvil.anvilrepair.AnvilBetterRepair;
+import insane96mcp.experienceoverhaul.module.anvil.anvilrepair.AnvilRepair;
 import insane96mcp.insanelib.core.feature.Feature;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -33,7 +35,7 @@ public class AnvilHandler {
         boolean renamingNoCost = AnvilRenaming.isNoCost();
         if (!Feature.isEnabled(AnvilXpCost.class)
                 && !Feature.isEnabled(AnvilMaterialRepair.class)
-                && !Feature.isEnabled(AnvilCustomRepairs.class)
+                && !Feature.isEnabled(AnvilBetterRepair.class)
                 && !renamingNoCost)
             return;
         if (!event.getOutput().isEmpty())
@@ -65,7 +67,7 @@ public class AnvilHandler {
             boolean isEnchantedBook = right.is(Items.ENCHANTED_BOOK)
                     && !right.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY).isEmpty();
 
-            Optional<AnvilRepair.RepairData> oRepairData = AnvilCustomRepairs.getCustomAnvilRepair(left, right);
+            Optional<AnvilRepair.RepairData> oRepairData = AnvilBetterRepair.getCustomAnvilRepair(left, right);
 
             if (resultStack.isDamageableItem() && (resultStack.getItem().isValidRepairItem(resultStack, right) || oRepairData.isPresent())) {
                 isMaterialRepair = true;

@@ -2,7 +2,7 @@ package insane96mcp.experienceoverhaul;
 
 import com.mojang.logging.LogUtils;
 import insane96mcp.experienceoverhaul.module.EOModules;
-import insane96mcp.experienceoverhaul.module.anvil.AnvilRepairReloadListener;
+import insane96mcp.experienceoverhaul.module.anvil.anvilrepair.AnvilRepairReloadListener;
 import insane96mcp.experienceoverhaul.network.NetworkHandler;
 import insane96mcp.insanelib.setup.ILModConfig;
 import net.minecraft.resources.ResourceLocation;

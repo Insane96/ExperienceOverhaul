@@ -1,8 +1,8 @@
 package insane96mcp.experienceoverhaul.network.message;
 
 import insane96mcp.experienceoverhaul.ExperienceOverhaul;
-import insane96mcp.experienceoverhaul.module.anvil.AnvilRepair;
-import insane96mcp.experienceoverhaul.module.anvil.AnvilRepairReloadListener;
+import insane96mcp.experienceoverhaul.module.anvil.anvilrepair.AnvilRepair;
+import insane96mcp.experienceoverhaul.module.anvil.anvilrepair.AnvilRepairReloadListener;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;

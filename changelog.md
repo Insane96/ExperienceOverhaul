@@ -1,3 +1,7 @@
+## 1.1.2.0
+* Added Anvil Repair support to EMI
+* Renamed Anvil Custom Repairs to Anvil Better Repair
+
 ## 1.1.1.1
 * Fixed anvil not working for other mod's custom recipes
 

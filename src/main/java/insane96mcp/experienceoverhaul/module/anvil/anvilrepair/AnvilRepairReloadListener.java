@@ -1,4 +1,4 @@
-package insane96mcp.experienceoverhaul.module.anvil;
+package insane96mcp.experienceoverhaul.module.anvil.anvilrepair;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
