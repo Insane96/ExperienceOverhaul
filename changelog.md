@@ -1,3 +1,7 @@
+## 1.1.2.1
+* Renamed the mod (Insane's Experience Overhaul -> Insane's Experience Tweaks)
+  * Since the original idea of overhauling the enchantments would require a huge effort, I've preferred to focus on making a new mod (coming soon) that mimics the enchantment system without experience. This mod is still useful for anvils even if you disable experience.
+
 ## 1.1.2.0
 * Added Anvil Repair support to EMI
 * Renamed Anvil Custom Repairs to Anvil Better Repair

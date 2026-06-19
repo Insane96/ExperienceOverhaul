@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
-issueTrackerURL="https://github.com/Insane96/ExperienceOverhaul/issues"
+issueTrackerURL="https://github.com/Insane96/ExperienceTweaks/issues"
 
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/insanes-experience-overhaul"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/insane-experience-tweaks"
 authors="Insane96MCP"
 description='''
 This mod changes Experience, Enchanting and Anvils
