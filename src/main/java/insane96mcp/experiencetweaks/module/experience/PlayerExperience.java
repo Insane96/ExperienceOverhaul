@@ -54,9 +54,6 @@ public class PlayerExperience extends Feature {
 		//Take into account global experience to prevent XP duping
 		if (!ignoreGlobalXPMultiplier && Feature.isEnabled(DroppedExperience.class) && DroppedExperience.globalMultiplier != 1d)
 			totalExp *= (int) (1d / DroppedExperience.globalMultiplier);
-		//Cap to 250k XP
-		if (totalExp > 250000)
-			totalExp = 250000;
 		return totalExp;
 	}
 
