@@ -1,4 +1,4 @@
-## Upcoming
+## 1.1.2.2
 * Fixed beehives not dropping experience if no campfire was under them
 * Fixed mobs with equipment dropping more experience than intended
 
