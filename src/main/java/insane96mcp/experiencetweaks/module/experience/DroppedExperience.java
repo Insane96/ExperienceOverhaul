@@ -162,7 +162,7 @@ public class DroppedExperience extends Feature {
 	}
 
 	// In vanilla, mobs drop loot before checking if they should drop more experience due to gear, this makes them never drop more experience if they drop equipment
-	// This sets the xp reward before the loot drops (also changes the xp reward from 1~4 per equipment to 2 (+2 if the item is enchanted))
+	// This sets the xp reward before the loot drops (also changes the xp reward from config options)
 	@SubscribeEvent
 	public void fixEquipmentExperience(LivingDeathEvent event) {
 		if (!(event.getEntity() instanceof Mob mob)
@@ -184,6 +184,12 @@ public class DroppedExperience extends Feature {
 					xpReward += mobs$bonusExperiencePerEnchantedEquipment;
 			}
 		}
+		if (!mob.getBodyArmorItem().isEmpty()) {
+			xpReward += mobs$bonusExperiencePerEquipment;
+			if (mob.getBodyArmorItem().isEnchanted())
+				xpReward += mobs$bonusExperiencePerEnchantedEquipment;
+		}
+
 		((MobAccessor) mob).setXpReward(xpReward);
 	}
 

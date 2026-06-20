@@ -1,5 +1,6 @@
 ## Upcoming
 * Fixed beehives not dropping experience if no campfire was under them
+* Fixed mobs with equipment dropping more experience than intended
 
 ## 1.1.2.1
 * Renamed the mod (Insane's Experience Overhaul -> Insane's Experience Tweaks)

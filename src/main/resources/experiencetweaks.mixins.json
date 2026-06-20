@@ -5,6 +5,7 @@
     "mixins": [
         "BeehiveBlockMixin",
         "BrushableBlockEntityMixin",
+        "MobMixin",
         "PlayerMixin",
         "SheepMixin",
         "ThrownExperienceBottleMixin",
