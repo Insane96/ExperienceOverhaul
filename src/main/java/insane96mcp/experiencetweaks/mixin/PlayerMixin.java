@@ -1,29 +1,26 @@
 package insane96mcp.experiencetweaks.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import insane96mcp.experiencetweaks.module.experience.PlayerExperience;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
 public class PlayerMixin {
     @Shadow
     public int experienceLevel;
 
-    @Inject(at = @At("RETURN"), method = "getXpNeededForNextLevel", cancellable = true)
-    private void experiencetweaks$xpForNextLevel(CallbackInfoReturnable<Integer> callback) {
+    @ModifyReturnValue(method = "getXpNeededForNextLevel", at = @At("RETURN"))
+    private int experiencetweaks$xpForNextLevel(int original) {
         int exp = PlayerExperience.getBetterScalingLevel(this.experienceLevel);
-        if (exp != -1)
-            callback.setReturnValue(exp);
-    }
+		return exp != -1 ? exp : original;
+	}
 
-    @Inject(at = @At("HEAD"), method = "getBaseExperienceReward", cancellable = true)
-    private void experiencetweaks$getExperiencePoints(CallbackInfoReturnable<Integer> callback) {
+    @ModifyReturnValue(method = "getBaseExperienceReward", at = @At(value = "RETURN", ordinal = 0))
+    private int experiencetweaks$getExperiencePoints(int original) {
         int exp = PlayerExperience.getExperienceOnDeath((Player) (Object) this, false);
-        if (exp != -1)
-            callback.setReturnValue(exp);
-    }
+		return exp != -1 ? exp : original;
+	}
 }

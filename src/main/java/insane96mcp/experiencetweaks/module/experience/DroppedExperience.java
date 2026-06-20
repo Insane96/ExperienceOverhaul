@@ -54,7 +54,7 @@ public class DroppedExperience extends Feature {
 	public static Integer xpBottleDroppedXp = 40;
 
 	@Config(min = 0, description = "Experience gained from harvesting Honey or Honeycombs from beehives")
-	public static MinMaxConfig honeyHarvestExperience = new MinMaxConfig(3, 5);
+	public static MinMaxConfig beehiveHarvestExperience = new MinMaxConfig(3, 5);
 	//@Config(min = 0, description = "Experience obtained when cows or mooshrooms are milked or stewed. This only works if Fluid Cooldown is enabled.")
 	//public static MinMaxConfig milkXp = new MinMaxConfig(3, 5);
 	@Config(min = 0, description = "Experience obtained when shearing sheep.")
@@ -73,9 +73,25 @@ public class DroppedExperience extends Feature {
 			entity.level().addFreshEntity(new ExperienceOrb(entity.level(), entity.getX(), entity.getY(), entity.getZ(), milkXp.getIntRandBetween(entity.level().random)));
 	}*/
 
+	public static void tryGenerateBeehiveXp(Entity entity) {
+		if (!Feature.isEnabled(DroppedExperience.class)
+				|| (beehiveHarvestExperience.min == 0 && beehiveHarvestExperience.max == 0))
+			return;
+		entity.level().addFreshEntity(new ExperienceOrb(entity.level(), entity.getX(), entity.getY(), entity.getZ(), beehiveHarvestExperience.getIntRandBetween(entity.level().random)));
+	}
+
 	public static void tryGenerateBrushXp(Entity entity) {
-		if (brushingXp.min > 0 || brushingXp.max > 0)
-			entity.level().addFreshEntity(new ExperienceOrb(entity.level(), entity.getX(), entity.getY(), entity.getZ(), brushingXp.getIntRandBetween(entity.level().random)));
+		if (!Feature.isEnabled(DroppedExperience.class)
+				|| (brushingXp.min == 0 && brushingXp.max == 0))
+			return;
+		entity.level().addFreshEntity(new ExperienceOrb(entity.level(), entity.getX(), entity.getY(), entity.getZ(), brushingXp.getIntRandBetween(entity.level().random)));
+	}
+
+	public static void tryGenerateSheepShearXp(Entity entity) {
+		if (!Feature.isEnabled(DroppedExperience.class)
+				|| (shearXp.min == 0 && shearXp.max == 0))
+			return;
+		entity.level().addFreshEntity(new ExperienceOrb(entity.level(), entity.getX(), entity.getY(), entity.getZ(), shearXp.getIntRandBetween(entity.level().random)));
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
