@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.Map;
 
 @EmiEntrypoint
-public class EOEmiPlugin implements EmiPlugin {
+public class ETEmiPlugin implements EmiPlugin {
 	@Override
 	public void register(EmiRegistry registry) {
 		if (Feature.isEnabled(AnvilBetterRepair.class)) {

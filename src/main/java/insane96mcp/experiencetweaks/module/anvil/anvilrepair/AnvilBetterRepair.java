@@ -1,13 +1,13 @@
 package insane96mcp.experiencetweaks.module.anvil.anvilrepair;
 
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Optional;
 
-@LoadFeature(module = EOModules.ANVIL, description = "Makes repairing items cost less materials instead of an arbitrary 4. Allows custom anvil repair recipes defined via datapacks in data/<modid>/anvil_repairs/.")
+@LoadFeature(module = ETModules.ANVIL, description = "Makes repairing items cost less materials instead of an arbitrary 4. Allows custom anvil repair recipes defined via datapacks in data/<modid>/anvil_repairs/.")
 public class AnvilBetterRepair extends Feature {
 
     public static Optional<AnvilRepair> getCustomAnvilRepair(ItemStack left) {

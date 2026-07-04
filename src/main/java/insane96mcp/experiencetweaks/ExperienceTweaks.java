@@ -1,7 +1,7 @@
 package insane96mcp.experiencetweaks;
 
 import com.mojang.logging.LogUtils;
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.experiencetweaks.module.anvil.anvilrepair.AnvilRepairReloadListener;
 import insane96mcp.experiencetweaks.network.NetworkHandler;
 import insane96mcp.insanelib.setup.ILModConfig;
@@ -22,7 +22,7 @@ public class ExperienceTweaks {
     public static ILModConfig CONFIG;
 
     public ExperienceTweaks(IEventBus eventBus, ModContainer modContainer) {
-        CONFIG = new ILModConfig(MOD_ID, ModConfig.Type.COMMON, eventBus, EOModules::init, ExperienceTweaks.class.getClassLoader());
+        CONFIG = new ILModConfig(MOD_ID, ModConfig.Type.COMMON, eventBus, ETModules::init, ExperienceTweaks.class.getClassLoader());
         modContainer.registerConfig(ModConfig.Type.COMMON, CONFIG.spec);
 
         eventBus.addListener(NetworkHandler::register);

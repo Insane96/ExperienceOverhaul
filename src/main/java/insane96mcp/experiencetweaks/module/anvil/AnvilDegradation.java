@@ -1,7 +1,7 @@
 package insane96mcp.experiencetweaks.module.anvil;
 
 import insane96mcp.experiencetweaks.ExperienceTweaks;
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
 import insane96mcp.insanelib.core.feature.config.Config;
@@ -22,7 +22,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.AnvilRepairEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-@LoadFeature(module = EOModules.ANVIL, description = "Changes the chance for anvils to degrade on use and allows repairing anvils with items in the experiencetweaks:repairs_anvil item tag.")
+@LoadFeature(module = ETModules.ANVIL, description = "Changes the chance for anvils to degrade on use and allows repairing anvils with items in the experiencetweaks:repairs_anvil item tag.")
 public class AnvilDegradation extends Feature {
 
 	public static final TagKey<Item> REPAIRS_ANVIL = TagKey.create(Registries.ITEM, ExperienceTweaks.location("repairs_anvil"));

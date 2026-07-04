@@ -1,11 +1,11 @@
 package insane96mcp.experiencetweaks.module.anvil;
 
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
 import insane96mcp.insanelib.core.feature.config.Config;
 
-@LoadFeature(module = EOModules.ANVIL, description = "Modifies how materials and item merging work when repairing items in an anvil.")
+@LoadFeature(module = ETModules.ANVIL, description = "Modifies how materials and item merging work when repairing items in an anvil.")
 public class AnvilMaterialRepair extends Feature {
 
 	@Config(min = 0d, description = "Percentage increase in materials required to repair an item for each enchantment level on the item.")

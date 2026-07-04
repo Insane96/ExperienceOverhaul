@@ -1,11 +1,11 @@
 package insane96mcp.experiencetweaks.module.anvil;
 
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
 import insane96mcp.insanelib.core.feature.config.Config;
 
-@LoadFeature(module = EOModules.ANVIL, description = "Modifies the XP cost for repairing and merging items in an anvil.")
+@LoadFeature(module = ETModules.ANVIL, description = "Modifies the XP cost for repairing and merging items in an anvil.")
 public class AnvilXpCost extends Feature {
 
 	@Config(min = 0, description = "Cap for the XP level cost when repairing or merging items in an anvil. Vanilla is 40.")

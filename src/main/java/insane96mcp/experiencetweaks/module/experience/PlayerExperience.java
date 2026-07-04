@@ -1,6 +1,6 @@
 package insane96mcp.experiencetweaks.module.experience;
 
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
 import insane96mcp.insanelib.core.feature.config.Config;
@@ -9,7 +9,7 @@ import net.minecraft.world.level.GameRules;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-@LoadFeature(module = EOModules.EXPERIENCE, description = "Changes the experience lost on death and xp per level required.")
+@LoadFeature(module = ETModules.EXPERIENCE, description = "Changes the experience lost on death and xp per level required.")
 public class PlayerExperience extends Feature {
 
 	@Config(min = -1, description = """

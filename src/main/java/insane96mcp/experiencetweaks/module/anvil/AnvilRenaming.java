@@ -1,6 +1,6 @@
 package insane96mcp.experiencetweaks.module.anvil;
 
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
 import insane96mcp.insanelib.core.feature.config.Config;
@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.AnvilRepairEvent;
 
-@LoadFeature(module = EOModules.ANVIL, description = "Removes the XP cost for renaming items and prevents anvil degradation when only renaming.")
+@LoadFeature(module = ETModules.ANVIL, description = "Removes the XP cost for renaming items and prevents anvil degradation when only renaming.")
 public class AnvilRenaming extends Feature {
 
 	@Config(description = "Renaming items in an anvil doesn't cost XP")

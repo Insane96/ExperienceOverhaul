@@ -1,7 +1,7 @@
 package insane96mcp.experiencetweaks.module.experience;
 
 import insane96mcp.experiencetweaks.mixin.accessor.MobAccessor;
-import insane96mcp.experiencetweaks.module.EOModules;
+import insane96mcp.experiencetweaks.module.ETModules;
 import insane96mcp.insanelib.core.ModNBTData;
 import insane96mcp.insanelib.core.feature.Feature;
 import insane96mcp.insanelib.core.feature.LoadFeature;
@@ -22,7 +22,7 @@ import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
-@LoadFeature(module = EOModules.EXPERIENCE, description = "Various changes to dropped experience.")
+@LoadFeature(module = ETModules.EXPERIENCE, description = "Various changes to dropped experience.")
 public class DroppedExperience extends Feature {
 	public static ResourceLocation XP_PROCESSED;
 	//public static final TagKey<Block> NO_BLOCK_XP_MULTIPLIER = ISOBlockTagsProvider.create("no_xp_multiplier");
