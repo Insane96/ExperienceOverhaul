@@ -10,19 +10,13 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @JsonAdapter(AnvilRepair.Serializer.class)
-public class AnvilRepair {
-    public final ObjTag<Item> itemToRepair;
-    public final List<RepairData> repairData;
-
-    public AnvilRepair(ObjTag<Item> itemToRepair, List<RepairData> repairData) {
-        this.itemToRepair = itemToRepair;
-        this.repairData = repairData;
-    }
+public record AnvilRepair(ObjTag<Item> itemToRepair, List<RepairData> repairData) {
 
     public boolean isItemToRepair(ItemStack stack) {
         return this.itemToRepair.matches(stack.getItem());
@@ -56,11 +50,12 @@ public class AnvilRepair {
         }
     }
 
-    public static final java.lang.reflect.Type LIST_TYPE = new TypeToken<ArrayList<AnvilRepair>>() {}.getType();
+    public static final Type LIST_TYPE = new TypeToken<ArrayList<AnvilRepair>>() {
+    }.getType();
 
     public static class Serializer implements JsonDeserializer<AnvilRepair>, JsonSerializer<AnvilRepair> {
         @Override
-        public AnvilRepair deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public AnvilRepair deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject obj = json.getAsJsonObject();
             ObjTag<Item> itemToRepair = ObjTag.deserialize(obj.get("item_to_repair"), Registries.ITEM);
             List<RepairData> repairData = new ArrayList<>();
@@ -83,7 +78,7 @@ public class AnvilRepair {
         }
 
         @Override
-        public JsonElement serialize(AnvilRepair src, java.lang.reflect.Type typeOfSrc, JsonSerializationContext context) {
+        public JsonElement serialize(AnvilRepair src, Type typeOfSrc, JsonSerializationContext context) {
             JsonObject jsonObject = new JsonObject();
             jsonObject.add("item_to_repair", src.itemToRepair.serialize());
             JsonArray repair = new JsonArray();

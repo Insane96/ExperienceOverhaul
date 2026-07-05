@@ -19,9 +19,9 @@ public class ETEmiPlugin implements EmiPlugin {
 	public void register(EmiRegistry registry) {
 		if (Feature.isEnabled(AnvilBetterRepair.class)) {
 			for (Map.Entry<ResourceLocation, AnvilRepair> anvilRepair : AnvilRepairReloadListener.REPAIRS.entrySet()) {
-				for (ItemStack stack : anvilRepair.getValue().itemToRepair.getAllObjects().stream().map(ItemStack::new).toList()) {
+				for (ItemStack stack : anvilRepair.getValue().itemToRepair().getAllObjects().stream().map(ItemStack::new).toList()) {
 					String itemPath = BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath();
-					for (AnvilRepair.RepairData repairData : anvilRepair.getValue().repairData) {
+					for (AnvilRepair.RepairData repairData : anvilRepair.getValue().repairData()) {
 						String materialStr = repairData.repairMaterial().toSerializedString();
 						String materialPath = materialStr.startsWith("#")
 								? "tag_" + ResourceLocation.parse(materialStr.substring(1)).getPath()
