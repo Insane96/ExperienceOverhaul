@@ -1,0 +1,9 @@
+{
+  "item_to_repair": "shieldsplus:stone_shield",
+  "repair": [
+    {
+      "repair_material": "#minecraft:stone_tool_materials",
+      "amount": 3.0
+    }
+  ]
+}

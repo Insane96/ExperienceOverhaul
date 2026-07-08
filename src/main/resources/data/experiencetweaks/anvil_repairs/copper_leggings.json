@@ -1,0 +1,14 @@
+{
+  "item_to_repair": "minecraft:copper_leggings",
+  "repair": [
+    {
+      "repair_material": "minecraft:copper_ingot",
+      "amount": 5.25
+    },
+    {
+      "repair_material": "minecraft:copper_nugget",
+      "amount": 47,
+      "cost_multiplier": 9
+    }
+  ]
+}

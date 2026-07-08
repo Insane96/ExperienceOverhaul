@@ -1,0 +1,15 @@
+{
+  "item_to_repair": "shieldsplus:netherite_shield",
+  "repair": [
+    {
+      "repair_material": "minecraft:diamond",
+      "amount": 3.0,
+      "max_repair": 0.5
+    },
+    {
+      "repair_material": "minecraft:netherite_ingot",
+      "amount": 2,
+      "cost_multiplier": 0.01
+    }
+  ]
+}

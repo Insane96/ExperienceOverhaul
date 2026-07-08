@@ -1,0 +1,14 @@
+{
+  "item_to_repair": "shieldsplus:iron_shield",
+  "repair": [
+    {
+      "repair_material": "minecraft:iron_ingot",
+      "amount": 3.0
+    },
+    {
+      "repair_material": "minecraft:iron_nugget",
+      "amount": 27,
+      "cost_multiplier": 9
+    }
+  ]
+}
