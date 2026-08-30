@@ -1,4 +1,4 @@
-# Upcoming
+# 1.1.3.1
 * Fixed anvil durability merging being inconsistent when one of the items has its max damage increased (Notably: Rune enchanting's Enduring)
 
 # 1.1.3.0
