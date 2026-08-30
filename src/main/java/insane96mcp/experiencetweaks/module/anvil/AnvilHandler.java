@@ -145,7 +145,12 @@ public class AnvilHandler {
                 if (resultStack.isDamageableItem() && !isEnchantedBook
                         && AnvilMaterialRepair.isAllowMergingItems()) {
                     int leftDurabilityLeft = left.getMaxDamage() - left.getDamageValue();
-                    float rightDurabilityLeft = right.getMaxDamage() - right.getDamageValue();
+                    int rightMaxDamage = right.getMaxDamage();
+                    float rightDurabilityLeft = rightMaxDamage - right.getDamageValue();
+                    // Scale to the result's max damage scale, since right's max damage (e.g. from a rune/enchantment
+                    // that only left has) can differ from left/result's, making raw durability points not directly comparable.
+                    if (rightMaxDamage > 0 && rightMaxDamage != resultStack.getMaxDamage())
+                        rightDurabilityLeft = rightDurabilityLeft / rightMaxDamage * resultStack.getMaxDamage();
                     if (left.isEnchanted() && AnvilMaterialRepair.decreaseRepairAmountWithEnchantments > 0f) {
                         float mult = 1f - AnvilMaterialRepair.decreaseRepairAmountWithEnchantments.floatValue();
                         for (Holder<Enchantment> holder : leftEnchantments.keySet())
